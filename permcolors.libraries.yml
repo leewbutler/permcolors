@@ -1,0 +1,9 @@
+default:
+  js:
+    js/permcolors.js: {}
+  css:
+    theme:
+      css/permcolors.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

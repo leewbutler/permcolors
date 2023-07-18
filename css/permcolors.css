@@ -1,0 +1,76 @@
+/**
+ * @file
+ *
+ * Permissions page color coding. This CSS applies color coding to our JS
+ * applied classes which are formatted to indicate checkbox status like so...
+ *
+ *    <TD class="permcolors--[was/is/got]-[checked/unchecked/disabled]"/>
+ *
+ * They are applied to each permission <TD> on the permissions page to more
+ * clearly indicated (via color coding) the existing and changed permissions
+ * the user is about to commit to upon save.
+ */
+
+/* THIS PERMISSION
+   ...will remain granted upon save:
+     1) Checked "on load" and has not changed.
+   ----------------------------- */
+td.permcolors--was-checked {
+  background: lightgreen;
+}
+
+/* ...will remain ungranted upon save:
+      1) Unchecked "on load" and has not changed.  */
+td.permcolors--was-unchecked {
+  background: salmon;
+}
+
+/* ...will be granted upon save:
+      1) Unchecked "on load".
+      2) Checked "post load".  */
+td.permcolors--was-unchecked.permcolors--got-checked {
+  background: green;
+}
+
+/* ...will be ungranted upon save:
+      1) Checked "on load".
+      2) Unchecked "post load". */
+td.permcolors--was-checked.permcolors--got-unchecked {
+  background: #e60000;
+}
+
+/* ...was going to be granted upon save, but no longer.
+      1) Unchecked "on load".
+      2) Checked then Unchecked "post load". */
+td.permcolors--was-unchecked.permcolors--got-unchecked:before {
+  /* No need to make this nitch status pop
+     so keeping origional color as is. */
+  background: salmon;
+}
+
+/* ...was going to be ungrant upon save, but no longer.
+      1) Checked "on load".
+      2) Unchecked then Checked "post load". */
+td.permcolors--was-checked.permcolors--got-checked:before {
+  /* No need to make this nitch status pop
+     so keeping origional color as is. */
+  background: lightgreen;
+}
+
+/*  ...is Disabled as Checked. */
+td.permcolors--was-checked.permcolors--is-disabled {
+  background: lightgreen;
+}
+
+
+/*  ...is Disabled as Unchecked. */
+td.permcolors--was-unchecked.permcolors--is-disabled {
+  background: salmon;
+}
+
+/* Permission's parent module title row. */
+tr.permcolors--module-title td {
+  border-bottom: 5px solid #333;
+  font-size: larger;
+  padding-top: 3em;
+}

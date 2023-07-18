@@ -1,0 +1,5 @@
+name: PermColors
+description: Better Drupal 9 and 10 permissions page readability via color coding.
+type: module
+package: Other
+core_version_requirement: ^9 || ^10

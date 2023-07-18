@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Contains permcolors.module.
+ */
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function permcolors_page_attachments_alter(&$page) {
+
+  // Attach our library if this path contains '/admin', '/people', or '/permissions'.
+  if(array_intersect(['admin', 'people', 'permissions'], explode('/',strtok($_SERVER["REQUEST_URI"], '?')))) {
+    $page['#attached']['library'][] = 'permcolors/default';
+  }
+
+  // TODO:
+  // Detect which admin theme is in use.  If the admin theme is "claro"
+  // or "seven" then do not attach the above library, instead display the
+  // following alert:
+  //
+  // ALERT TEXT:
+  // The "PermColors" module is designed to work with the standard "claro" and
+  // "seven" admin themes. Currently the unsupported admmin theme [FOO] is
+  // enabled so "Permisssions color coding" has not been applied to your
+  // permissions page. To resolve this issue:
+  //    - Visit the [Modules Page] to disable the "PermColors" module, or...
+  //    - Visit the [Display Page] to enable a supported "PermColors" admin theme.
+
+}
